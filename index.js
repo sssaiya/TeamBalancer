@@ -75,9 +75,9 @@ function getNewToken(oAuth2Client, callback) {
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 async function listNames(auth) {
-  console.log("--------------------------------------------------" +
+  console.log("----------------------------------------------------------------" +
     "------------------------------------------------------------\n");
-  console.log("Team | Drop Chance | Pass No Pass | Time Management| JavaScript " +
+  console.log("Team | Num Members | Drop Chance | Pass No Pass | Time Management| JavaScript " +
     "| New Skills | Communication | Data Structures\n");
   var index = 1;
   for (index = 1; index < 11; index++) {
@@ -135,11 +135,9 @@ function getScoreForTeam(index, auth) {
       if (index >= 10) { specialSpace = " " }
       else { specialSpace = "  " }
 
-      //  console.log("Team | Drop Chance | Pass No Pass | Time Management| JavaScript " +
-    //"| New Skills | Communication | Data Structures\n");
-
-      console.log(specialSpace + index + "  |    " + (dropChance / numMembers).toPrecision(4) +
-        "    |    " + (pnpChance / numMembers).toPrecision(4) +
+      console.log(specialSpace + index + "  |     " + numMembers +
+        "     |    " + (dropChance / numMembers).toPrecision(4) +
+        "     |    " + (pnpChance / numMembers).toPrecision(4) +
         "     |     " + (timeManageSkill / numMembers).toPrecision(4) +
         "      |   " + (jsSkill / numMembers).toPrecision(4) +
         "    |    " + (newSkill / numMembers).toPrecision(4) +
