@@ -114,7 +114,7 @@ function getScoreForTeam(index, auth) {
   const sheets = google.sheets({ version: 'v4', auth });
   sheets.spreadsheets.values.get({
     spreadsheetId: '1gPw4Kx1QG8ZaEwG-09mH0Kh8nEnh_WU9lYXbN6GzT5s',
-    range: "'Backup'",
+    range: "'Form Responses 1'",
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
@@ -125,7 +125,7 @@ function getScoreForTeam(index, auth) {
           numMembers = numMembers + 1;
           dropChance = dropChance + parseInt(row[7]);
           pnpChance = pnpChance + parseInt(row[8]);
-          timeManageSkill = timeManageSkill + parseInt(row[14]);
+          timeManageSkill = timeManageSkill + parseInt(row[15]);
           jsSkill = jsSkill + parseInt(row[30]);
           newSkill = newSkill + parseInt(row[31]);
           dsSkill = dsSkill + parseInt(row[32]);
