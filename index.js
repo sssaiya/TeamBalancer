@@ -79,12 +79,12 @@ async function listNames(auth) {
     "------------------------------------------------------------\n");
   console.log("Team | Drop Chance | Pass No Pass | Time Management| JavaScript " +
     "| New Skills | Communication | Data Structures\n");
-  var index = 6
-  // for (index = 1; index < 11; index++) {
-  //   await getScoreForTeam(index, auth);
-  // }
+  var index = 1;
+  for (index = 1; index < 11; index++) {
+    await getScoreForTeam(index, auth);
+  }
 
-  getScoreForTeam(index, auth)
+  //getScoreForTeam(index, auth)
 
 }
 
