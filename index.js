@@ -114,14 +114,13 @@ function getScoreForTeam(index, auth) {
   const sheets = google.sheets({ version: 'v4', auth });
   sheets.spreadsheets.values.get({
     spreadsheetId: '1gPw4Kx1QG8ZaEwG-09mH0Kh8nEnh_WU9lYXbN6GzT5s',
-    range: "'Form Responses 1'",
+    range: "'Main'",
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
     if (rows.length) {
       rows.map((row) => {
         if (row[2] == index) {
-          // console.log(dropChance);
           numMembers = numMembers + 1;
           dropChance = dropChance + parseInt(row[7]);
           pnpChance = pnpChance + parseInt(row[8]);
