@@ -1,6 +1,9 @@
 const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
+var csvWriter = require('csv-write-stream')
+var writer = csvWriter()
+
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -75,6 +78,9 @@ function getNewToken(oAuth2Client, callback) {
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 async function listNames(auth) {
+  writer.pipe(fs.createWriteStream('ZoomBreakout.csv'));
+  csvWriter({ headers: ["Pre-assign Room Name", "Email Address"]});
+  // writer.write({ :"Pre-assign Room Name", "Email Address":"Email Address" });
   console.log("----------------------------------------------------------------" +
     "------------------------------------------------------------\n");
   console.log("Team | Num Members | Drop Chance | Pass No Pass | Time Management| JavaScript " +
@@ -83,6 +89,7 @@ async function listNames(auth) {
   for (index = 1; index < 11; index++) {
     await getScoreForTeam(index, auth);
   }
+  //writer.end();
 
   //getScoreForTeam(index, auth)
 
@@ -121,6 +128,8 @@ function getScoreForTeam(index, auth) {
     if (rows.length) {
       rows.map((row) => {
         if (row[2] == index) {
+          // console.log(row[1])
+          addToCSV(index, row[1]);
           numMembers = numMembers + 1;
           dropChance = dropChance + parseInt(row[7]);
           pnpChance = pnpChance + parseInt(row[8]);
@@ -144,10 +153,15 @@ function getScoreForTeam(index, auth) {
         "     |      " + (dsSkill / numMembers).toPrecision(4)
 
       );
+      // writer.end();
     } else {
       console.log('No data found.');
     }
   });
+
+  function addToCSV(number, email) {
+    writer.write({ "Pre-assign Room Name": "room"+number, "Email Address": email});
+  }
 
 
 }
