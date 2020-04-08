@@ -86,7 +86,7 @@ async function listNames(auth) {
   console.log("Team | Num Members | Drop Chance | Pass No Pass | Time Management| JavaScript " +
     "| New Skills | Communication | Data Structures\n");
   var index = 1;
-  for (index = 1; index < 11; index++) {
+  for (index = 1; index <= 11; index++) {
     await getScoreForTeam(index, auth);
   }
   //writer.end();
