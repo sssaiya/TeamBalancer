@@ -79,7 +79,7 @@ function getNewToken(oAuth2Client, callback) {
  */
 async function listNames(auth) {
   writer.pipe(fs.createWriteStream('ZoomBreakout.csv'));
-  csvWriter({ headers: ["Pre-assign Room Name", "Email Address"]});
+  csvWriter({ headers: ["Pre-assign Room Name", "Email Address"] });
   // writer.write({ :"Pre-assign Room Name", "Email Address":"Email Address" });
   console.log("----------------------------------------------------------------" +
     "------------------------------------------------------------\n");
@@ -160,7 +160,7 @@ function getScoreForTeam(index, auth) {
   });
 
   function addToCSV(number, email) {
-    writer.write({ "Pre-assign Room Name": "room"+number, "Email Address": email});
+    writer.write({ "Pre-assign Room Name": "room" + number, "Email Address": email });
   }
 
 
