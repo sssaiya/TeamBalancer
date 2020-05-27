@@ -178,11 +178,3 @@ function getScoreForTeam(index, auth) {
 
 
 
-
-
-
-
-
-
-
-
