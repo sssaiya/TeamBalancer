@@ -161,7 +161,6 @@ function getScoreForTeam(index, auth) {
 
   function addToCSV(number, email) {
     writer.write({ "Pre-assign Room Name": "room" + number, "Email Address": email });
-  }
-
+  }  
 
 }
