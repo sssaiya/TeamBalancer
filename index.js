@@ -164,3 +164,9 @@ function getScoreForTeam(index, auth) {
   }  
 
 }
+
+
+
+
+
+
